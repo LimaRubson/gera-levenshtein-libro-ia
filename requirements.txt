@@ -1,0 +1,9 @@
+# Dependências para o Importador de Redações (Streamlit + MySQL)
+# Observação: mantenha estas versões ou superiores compatíveis com seu Python.
+
+streamlit>=1.32
+pandas>=2.0
+SQLAlchemy>=2.0
+PyMySQL>=1.1
+python-dotenv>=1.0
+openpyxl>=3.1  # leitura de .xlsx pelo pandas
