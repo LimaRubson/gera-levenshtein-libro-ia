@@ -125,7 +125,7 @@ def montar_query(prompt_ids: List[int]) -> tuple[str, dict]:
             key = f"p{i}"
             placeholders.append(f":{key}")
             params[key] = val
-        query = SELECT_BASE + f" WHERE tai.melhoria_prompt_id IN ({', '.join(placeholders)})"
+        query = SELECT_BASE + f" WHERE tai.prompt_id IN ({', '.join(placeholders)})"
     else:
         query = SELECT_BASE
     return query, params
@@ -215,13 +215,13 @@ with st.sidebar:
 
     st.divider()
     st.subheader("Filtro")
-    prompt_ids_str = st.text_input("prompt_id (separe por vírgula)", value=_clean_env(os.getenv("MELHORIA_PROMPT_ID", "")))
+    prompt_ids_str = st.text_input("prompt_id (separe por vírgula)", value=_clean_env(os.getenv("PROMPT_ID", "")))
     try:
         prompt_ids = parse_ids_arg(prompt_ids_str)
         if prompt_ids:
-            st.info(f"Filtrando por melhoria_prompt_id IN {prompt_ids}")
+            st.info(f"Filtrando por prompt_id IN {prompt_ids}")
         else:
-            st.warning("Nenhum melhoria_prompt_id informado — serão processadas TODAS as linhas.", icon="⚠️")
+            st.warning("Nenhum prompt_id informado — serão processadas TODAS as linhas.", icon="⚠️")
     except ValueError as e:
         st.error(str(e))
         prompt_ids = []
