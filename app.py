@@ -113,7 +113,7 @@ def montar_query(prompt_ids: List[int]) -> tuple[str, dict]:
         tai.melhoria_prompt_id,
         tai.co_correcoes_ia_id,
         tai.levenshtein       AS levenshtein_antigo,
-        td.texto_digitado     AS texto_digitado
+        td.texto_digitado_paragrafos_separados AS texto_digitado
     FROM temp_analise_correcao_ia tai
     LEFT JOIN textos_digitados td
            ON td.redacao_id = tai.redacao_id
